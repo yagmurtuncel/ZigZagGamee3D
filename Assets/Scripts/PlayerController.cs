@@ -19,7 +19,6 @@ public class PlayerController : MonoBehaviour
     Vector3 yon = Vector3.left;
     int bestScore = 0;
     float score = 0f;
-    float artisMiktari = 1f;
     
 
 
