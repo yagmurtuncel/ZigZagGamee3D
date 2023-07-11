@@ -6,15 +6,19 @@ using UnityEngine.SceneManagement;
 
 public class ShopController : MonoBehaviour
 {
-    [SerializeField] private GameObject selectedSkin;
+    [SerializeField] private Image selectedSkin;
     [SerializeField] private Text coinsText;
     [SerializeField] private SkinManager skinManager;
+    float coin;
+    float score;
+    
 
     void Update()
     {
-        coinsText.text = "Coins: " + PlayerPrefs.GetInt("Coins");
-        selectedSkin = skinManager.GetSelectedSkin().ball;
+        coin = score;
+        PlayerPrefs.SetInt("Coins", (int)coin);
+        selectedSkin.sprite = skinManager.GetSelectedSkin().sprite;
     }
 
-    public void LoadMenu() => SceneManager.LoadScene("MainMenuScene");
+    
 }

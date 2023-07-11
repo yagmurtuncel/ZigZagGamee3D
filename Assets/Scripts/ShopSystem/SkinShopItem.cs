@@ -15,7 +15,7 @@ public class SkinShopItem : MonoBehaviour
     {
         skin = skinManager.skins[skinIndex];
 
-        GetComponent<GameObject>().SetActive(true);
+        GetComponent<Image>().sprite = skin.sprite;
 
         if (skinManager.IsUnlocked(skinIndex))
         {

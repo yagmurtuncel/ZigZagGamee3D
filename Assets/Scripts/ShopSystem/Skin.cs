@@ -6,5 +6,5 @@ using UnityEngine;
 public class Skin
 {
     public int cost;
-    public GameObject ball;
+    public Sprite sprite;
 }

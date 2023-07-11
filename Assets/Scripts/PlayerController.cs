@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Out Component")]
     [SerializeField] float speed;
-    [SerializeField] Text scoreText, bestScoreText,startPanelBestScoreText,restartPanelBestScoreText;
+    [SerializeField] Text scoreText, bestScoreText,startPanelBestScoreText,restartPanelBestScoreText, coinText;
     [SerializeField] GameObject restartPanel, playGamePanel;
     [SerializeField] Animator panelAnim;
 
@@ -17,8 +17,9 @@ public class PlayerController : MonoBehaviour
     public float hizlanmaZorlugu;
     bool beatHighScore;
     Vector3 yon = Vector3.left;
-    int bestScore = 0;
-    float score = 0f;
+    int bestScore;
+    float coin;
+    public float score = 0f;
     
 
 
@@ -33,6 +34,11 @@ public class PlayerController : MonoBehaviour
 
         bestScore = PlayerPrefs.GetInt("BestScore");
         startPanelBestScoreText.text = "Best Score: " + bestScore.ToString();
+
+        coin = PlayerPrefs.GetInt("Coins");
+        coinText.text = "Coins: " + coin.ToString();
+        
+
     }
 
     private void Update()
@@ -84,6 +90,7 @@ public class PlayerController : MonoBehaviour
         transform.position += hareket; //hareket değerini sürekli pozisyonuma ekle
 
         scoreText.text = "Score: "+ ((int) score).ToString();
+        coinText.text="Coins:" + ((int)coin).ToString();
     }
 
     private void OnCollisionExit(Collision collision)
@@ -99,7 +106,10 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Coin"))
         {
+            
             CoinCollecting(other);
+            coin += 5;
+            
         }
     }
 
@@ -121,6 +131,7 @@ public class PlayerController : MonoBehaviour
     void CoinCollecting(Collider other)
     {
         score += 5;
+        
         Destroy(other.gameObject);
         SpeedIncreaser();
         if(PlayerPrefs.GetInt("BestScore") < score && !beatHighScore)
@@ -128,6 +139,8 @@ public class PlayerController : MonoBehaviour
             beatHighScore = true;
             panelAnim.SetTrigger("HighScore");
         }
+        
+
     }
 
     void SpeedIncreaser()
