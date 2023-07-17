@@ -10,12 +10,11 @@ public class ShopController : MonoBehaviour
     [SerializeField] private Text coinsText;
     [SerializeField] private SkinManager skinManager;
     float coin;
-    float score;
+    
     
 
     void Update()
     {
-        coin = score;
         PlayerPrefs.SetInt("Coins", (int)coin);
         selectedSkin.sprite = skinManager.GetSelectedSkin().sprite;
     }
