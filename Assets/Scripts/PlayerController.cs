@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        if(RestartGame.isRestart)
+        if(GameManager.isRestart)
         {
             isDead = false;
             playGamePanel.SetActive(false);
@@ -37,6 +37,8 @@ public class PlayerController : MonoBehaviour
 
         coin = PlayerPrefs.GetInt("Coins");
         coinText.text = "Coins: " + coin.ToString();
+
+       
         
 
     }

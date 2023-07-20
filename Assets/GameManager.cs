@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class RestartGame : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject playGamePanel;
     public static bool isRestart = false;
@@ -14,30 +14,14 @@ public class RestartGame : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    
+
     public void BackMenu()
     {
         playGamePanel.SetActive(true);
-        
     }
 
     public void ExitGame()
     {
         Application.Quit();
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-}//class
+}
