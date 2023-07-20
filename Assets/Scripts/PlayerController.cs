@@ -8,12 +8,12 @@ public class PlayerController : MonoBehaviour
     [Header("Out Component")]
     [SerializeField] float speed;
     [SerializeField] Text scoreText, bestScoreText,startPanelBestScoreText,restartPanelBestScoreText, coinText;
-    [SerializeField] GameObject restartPanel, playGamePanel;
+    [SerializeField] GameObject restartPanel;
     [SerializeField] Animator panelAnim;
 
     [Header("Public Variable")]
     public GroundAndCoinSpawner groundAndCoinSpawner;
-    public static bool isDead = true;
+    public static bool isDead = false;
     public float hizlanmaZorlugu;
     bool beatHighScore;
     Vector3 yon = Vector3.left;
@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
         if(GameManager.isRestart)
         {
             isDead = false;
-            playGamePanel.SetActive(false);
+            
         }
 
         bestScore = PlayerPrefs.GetInt("BestScore");
@@ -39,8 +39,6 @@ public class PlayerController : MonoBehaviour
         coinText.text = "Coins: " + coin.ToString();
 
        
-        
-
     }
 
     private void Update()
@@ -124,11 +122,7 @@ public class PlayerController : MonoBehaviour
         Destroy(zemin);
     }
 
-    public void PlayGame()
-    {
-        isDead = false;
-        playGamePanel.SetActive(false);
-    }
+    
 
     void CoinCollecting(Collider other)
     {

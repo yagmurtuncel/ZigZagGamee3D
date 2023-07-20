@@ -5,6 +5,7 @@ using UnityEngine;
 public class ShopManager : MonoBehaviour
 {
     public int currentModelIndex;
+    
     public GameObject[] pModels;
 
     void Start()
@@ -18,9 +19,31 @@ public class ShopManager : MonoBehaviour
         pModels[currentModelIndex].SetActive(true);
     }
 
-   
-    void Update()
+
+    public void ChangeNext ()
     {
-        
+        pModels[currentModelIndex].SetActive(false);
+        currentModelIndex++;
+
+        if(currentModelIndex == pModels.Length)
+        {
+            currentModelIndex = 0;
+        }
+        pModels[currentModelIndex].SetActive(true);
+        PlayerPrefs.SetInt("SelectedModel", currentModelIndex);
     }
-}
+    public void ChangePrevious ()
+    {
+        pModels[currentModelIndex].SetActive(false);
+        currentModelIndex--;
+
+        if(currentModelIndex == -1)
+        {
+            currentModelIndex = pModels.Length -1;
+        }
+        pModels[currentModelIndex].SetActive(true);
+        PlayerPrefs.SetInt("SelectedModel", currentModelIndex);
+    }
+
+
+}//class

@@ -1,23 +1,34 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] GameObject playGamePanel;
     public static bool isRestart = false;
-    public void restartGame()
+    
+    
+
+    public void PlayGame()
+    {
+
+        isRestart = false;
+        SceneManager.LoadScene("Game");
+    }
+    public void RestartGame()
     {
         isRestart = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    public void Shop()
+    {
+        SceneManager.LoadScene("ShopMenu");
+    }
 
     public void BackMenu()
     {
-        playGamePanel.SetActive(true);
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void ExitGame()
